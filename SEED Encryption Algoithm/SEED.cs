@@ -214,8 +214,9 @@ namespace SEED_Encryption_Algoithm
             t0 += t1;
         }
 
-        public static UInt32[] seedEncryption(UInt32[] roundKeys, UInt32 l0, UInt32 l1, UInt32 r0, UInt32 r1)
+        public static UInt32[] seedEncryption(ref List<RoundValue> roundList , UInt32[] roundKeys, UInt32 l0, UInt32 l1, UInt32 r0, UInt32 r1)
         {
+            roundList = new List<RoundValue>();
             int i;
             UInt32 temp0 = 0;
             UInt32 temp1 = 0;
@@ -226,7 +227,9 @@ namespace SEED_Encryption_Algoithm
             int roundKeysPos = 0;
             for (i = 0; i < 16; i++)
             {
-                //Apply function F
+                RoundValue values = new RoundValue() { roundNumber = i + 1, Ki0 = roundKeys[roundKeysPos], Ki1 = roundKeys[roundKeysPos + 1], L0 = left0, L1 = left1, R0 = right0, R1 = right1 };
+                roundList.Add(values);
+                
                 FFunction(roundKeys[roundKeysPos], roundKeys[roundKeysPos + 1], ref left0, ref left1, ref right0, ref right1, ref temp0, ref temp1);
 
                 temp0 ^= left0;
@@ -236,7 +239,6 @@ namespace SEED_Encryption_Algoithm
                 right0 = temp0;
                 right1 = temp1;
 
-                //Advance current location in key schedule
                 roundKeysPos += 2;
             }
             UInt32[] res = new UInt32[4];
@@ -247,8 +249,9 @@ namespace SEED_Encryption_Algoithm
             return res;
         }
 
-        public static UInt32[] seedDecryption(UInt32[] roundKeys,UInt32 l0, UInt32 l1, UInt32 r0, UInt32 r1)
+        public static UInt32[] seedDecryption(ref List<RoundValue> roundList, UInt32[] roundKeys,UInt32 l0, UInt32 l1, UInt32 r0, UInt32 r1)
         {
+            roundList = new List<RoundValue>();
             int i;
             UInt32 temp0 = 0;
             UInt32 temp1 = 0;
@@ -259,7 +262,9 @@ namespace SEED_Encryption_Algoithm
             int roundKeysPos = 31;
             for (i = 0; i < 16; i++)
             {
-                //Apply function F
+                RoundValue values = new RoundValue() { roundNumber = i + 1, Ki0 = roundKeys[roundKeysPos-1], Ki1 = roundKeys[roundKeysPos], L0 = left0, L1 = left1, R0 = right0, R1 = right1 };
+                roundList.Add(values);
+                
                 FFunction(roundKeys[roundKeysPos - 1], roundKeys[roundKeysPos], ref left0, ref left1, ref right0, ref right1, ref temp0, ref temp1);
 
                 temp0 ^= left0;
@@ -269,7 +274,6 @@ namespace SEED_Encryption_Algoithm
                 right0 = temp0;
                 right1 = temp1;
 
-                //Advance current location in key schedule
                 roundKeysPos -= 2;
             }
 

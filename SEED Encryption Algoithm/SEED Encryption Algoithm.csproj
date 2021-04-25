@@ -73,6 +73,7 @@
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="GFunctionValue.cs" />
+    <Compile Include="RoundValue.cs" />
     <Compile Include="SEED.cs" />
     <Compile Include="Subkey.cs" />
     <Page Include="CustomMessageBox.xaml">
