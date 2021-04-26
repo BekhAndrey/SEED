@@ -504,7 +504,7 @@ C9D1D819,4C404C0C,83838003,8F838C0F,CEC2CC0E,0B33383B,4A42480A,87B3B437</TextBlo
                 <TabItem.Header>
                     <StackPanel Orientation="Vertical">
                         <Border Background="#673ab7" CornerRadius="5" Margin="-4,0,-4,0" >
-                            <TextBlock Foreground="#ffffff" FontWeight="DemiBold" Height="20" Margin="0,10,0,10" Width="180" Text="Песочница" TextAlignment="Center" FontSize="15"/>
+                            <TextBlock Foreground="#ffffff" FontWeight="DemiBold" Height="20" Margin="0,10,0,10" Width="180" Text="SEED" TextAlignment="Center" FontSize="15"/>
                         </Border>
                     </StackPanel>
                 </TabItem.Header>
@@ -514,7 +514,7 @@ C9D1D819,4C404C0C,83838003,8F838C0F,CEC2CC0E,0B33383B,4A42480A,87B3B437</TextBlo
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Border Background="#673ab7" Margin="0,-1,0.2,504.8" CornerRadius="0,0,0,0">
-                            <Label Content="Песочница" FontSize="27"  VerticalAlignment="Center" Foreground="White" Height="40"  HorizontalAlignment="Center" Width="147"/>
+                            <Label Content="SEED" FontSize="27"  VerticalAlignment="Center" Foreground="White" Height="40"  HorizontalAlignment="Center" Width="74"/>
                         </Border>
                         <TextBox x:Name="BoxKey"   
                             FontSize="20"
@@ -540,7 +540,7 @@ C9D1D819,4C404C0C,83838003,8F838C0F,CEC2CC0E,0B33383B,4A42480A,87B3B437</TextBlo
   materialDesign:HintAssist.Hint="Зашифрованный текст"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Top" Margin="675,186,64.2,0" />
-                        <Button x:Name="EncryptTextBtn" FontSize="18" Content="Зашифровать блок" HorizontalAlignment="Left" Margin="346,192,0,0" VerticalAlignment="Top" Height="40" Width="287" Click="encryptTextClick"/>
+                        <Button x:Name="EncryptTextBtn" FontSize="18" Content="Зашифровать текст" HorizontalAlignment="Left" Margin="346,192,0,0" VerticalAlignment="Top" Height="40" Width="287" Click="encryptTextClick"/>
                         <TextBox x:Name="TextToDecrypt"
                             TextWrapping="Wrap"
                             AcceptsReturn="True"
@@ -558,7 +558,7 @@ C9D1D819,4C404C0C,83838003,8F838C0F,CEC2CC0E,0B33383B,4A42480A,87B3B437</TextBlo
   materialDesign:HintAssist.Hint="Расшифрованный текст"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Top" Margin="675,350,64.2,0" />
-                        <Button x:Name="DecryptTextBtn" FontSize="18" Content="Расшифровать блок" HorizontalAlignment="Left" Margin="346,360,0,0" VerticalAlignment="Top" Height="40" Width="287" Click="decryptTextClick"/>
+                        <Button x:Name="DecryptTextBtn" FontSize="18" Content="Расшифровать текст" HorizontalAlignment="Left" Margin="346,360,0,0" VerticalAlignment="Top" Height="40" Width="287" Click="decryptTextClick"/>
 
 
                     </Grid>
