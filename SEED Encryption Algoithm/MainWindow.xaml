@@ -280,7 +280,7 @@ C9D1D819,4C404C0C,83838003,8F838C0F,CEC2CC0E,0B33383B,4A42480A,87B3B437</TextBlo
                         <TextBlock TextWrapping="Wrap" Style="{StaticResource MaterialDesignHeadline6TextBlock}" FontSize="19" TextAlignment="Justify"  Margin="33,78,7.2,410.8" xml:space="preserve"> Для получения подключей для каждого из 16 раундов используется специальный генератор.В нем применяются операции сложения по модулю 2^32, вычитание по модулю 2^32, функция G, а также циклические сдвиги вправо и влево</TextBlock>
                         <TextBox x:Name="KeyBox"   
                             FontSize="20"
-  materialDesign:HintAssist.Hint="Исходный ключ"
+  materialDesign:HintAssist.Hint="Секретный ключ"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Top" Margin="67,154,643.2,0" />
                         <Button x:Name="KeyGen" FontSize="18" Content="Сгенерировать подключи" HorizontalAlignment="Left" Margin="66,222,0,0" VerticalAlignment="Top" Height="40" Width="270" Click="generateKeyClick"/>
@@ -518,7 +518,7 @@ C9D1D819,4C404C0C,83838003,8F838C0F,CEC2CC0E,0B33383B,4A42480A,87B3B437</TextBlo
                         </Border>
                         <TextBox x:Name="BoxKey"   
                             FontSize="20"
-  materialDesign:HintAssist.Hint="Исходный ключ"
+  materialDesign:HintAssist.Hint="Секретный ключ"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Top" Margin="56,95,682.2,0" />
                         <Button x:Name="GenKey" FontSize="18" Content="Сгенерировать подключи" HorizontalAlignment="Left" Margin="346,108,0,0" VerticalAlignment="Top" Height="40" Width="287" Click="generateKClick"/>
