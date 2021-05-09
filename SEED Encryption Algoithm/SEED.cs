@@ -227,7 +227,8 @@ namespace SEED_Encryption_Algoithm
             int roundKeysPos = 0;
             for (i = 0; i < 16; i++)
             {
-                RoundValue values = new RoundValue() { roundNumber = i + 1, Ki0 = roundKeys[roundKeysPos], Ki1 = roundKeys[roundKeysPos + 1], L0 = left0, L1 = left1, R0 = right0, R1 = right1 };
+                RoundValue values = new RoundValue() { roundNumber = i + 1, Ki0 = roundKeys[roundKeysPos], 
+                                                       Ki1 = roundKeys[roundKeysPos + 1], L0 = left0, L1 = left1, R0 = right0, R1 = right1 };
                 roundList.Add(values);
                 
                 FFunction(roundKeys[roundKeysPos], roundKeys[roundKeysPos + 1], ref left0, ref left1, ref right0, ref right1, ref temp0, ref temp1);

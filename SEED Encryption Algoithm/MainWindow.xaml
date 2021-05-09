@@ -13,7 +13,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1200"
+        Title="SEED Encryption Algorithm" Height="600" Width="1200"
         ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="TabItem">
@@ -77,7 +77,7 @@
 
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,65,0.2,155.8">
-                            <TextBlock Width="581" FontWeight="DemiBold"  Margin="10,10,0,-0.6" FontSize="20" TextWrapping="Wrap" TextAlignment="Justify"><Run Text=" SEED — симметричный блочный криптоалгоритм на основе Сети Фейстеля, разработанный Корейским агентством информационной безопасности (Korean Information Security Agency, KISA) в 1998 году.  В алгоритме используется 128-битный блок и ключ. Алгоритм является национальным стандартом шифрования в Коррейской Республике. "/><LineBreak/><Run Text="SEED представляет собой Сеть Фейстеля с 16 раундами, 128-битовыми блоками и 128-битовым ключом, функцией F, функцией G, а также генератором подключей для каждого из 16 раундов"/></TextBlock>
+                            <TextBlock Width="581" FontWeight="DemiBold"  Margin="10,10,0,-0.6" FontSize="20" TextWrapping="Wrap" TextAlignment="Justify"><Run Text="SEED — симметричный блочный криптоалгоритм на основе Сети Фейстеля, разработанный Корейским агентством информационной безопасности (Korean Information Security Agency, KISA) в 1998 году.  В алгоритме используется 128-битный блок и ключ. Алгоритм является национальным стандартом шифрования в Коррейской Республике. "/><LineBreak/><Run Text="SEED представляет собой Сеть Фейстеля с 16 раундами, 128-битными блоками и 128-битным ключом, функцией F, функцией G, а также генератором подключей для каждого из 16 раундов."/></TextBlock>
                         </StackPanel>
                         <materialDesign:Card
   Width="Auto" Margin="608,65,23.2,262.8">
@@ -98,7 +98,7 @@
                                 </ToolTip>
                             </Image.ToolTip>
                         </Image>
-                        <TextBlock FontWeight="DemiBold"  FontSize="20" Margin="14,318,501.2,212.8"> В алгоритме используется 4 блока подстановок:</TextBlock>
+                        <TextBlock FontWeight="DemiBold"  FontSize="20" Margin="10,319,505.2,211.8">В алгоритме используется 4 блока подстановок:</TextBlock>
                         <TextBlock FontWeight="UltraBold" FontStyle="Italic"   FontSize="20" Margin="480,319,428.2,211.8"> SBox1,
                             <TextBlock.ToolTip>
                                 <ToolTip>
@@ -217,7 +217,7 @@ E0E828C8,13181B0B,01040505,71783949,90901080,62682A4A,22282A0A,92981A8A</TextBlo
                                 </ToolTip>
                             </TextBlock.ToolTip>
                         </TextBlock>
-                        <TextBlock FontWeight="UltraBold" FontStyle="Italic"  FontSize="20" Margin="689,319,203.2,211.8"> и SBox4
+                        <TextBlock FontWeight="UltraBold" FontStyle="Italic"  FontSize="20" Margin="689,319,203.2,211.8"> и SBox4.
                             <TextBlock.ToolTip>
                                 <ToolTip>
                                     <TextBlock FontSize="10" MaxWidth="500" TextWrapping="Wrap">
@@ -256,8 +256,8 @@ C9D1D819,4C404C0C,83838003,8F838C0F,CEC2CC0E,0B33383B,4A42480A,87B3B437</TextBlo
                                 </ToolTip>
                             </TextBlock.ToolTip>
                         </TextBlock>
-                        <TextBlock TextWrapping="Wrap" FontWeight="DemiBold"  FontSize="20" Margin="10,347,50.2,157.8"> S-блоки используется, как промежуточная операция подстановок, при которой группа битов отображается в другую группу битов</TextBlock>
-                        <TextBlock TextWrapping="Wrap" FontWeight="DemiBold"  FontSize="20" Margin="10,398,50.2,86.8" xml:space="preserve"> SEED имеет сложное ключевое расписание, генерируя 16  64-разрядных подключей, используя G-Функции над исходныи ключом, комбинированным со специальными раундовыми константами</TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontWeight="DemiBold"  FontSize="20" Margin="10,347,50.2,157.8"> S-блоки используется, как промежуточная операция подстановок, при которой группа битов отображается в другую группу битов.</TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontWeight="DemiBold"  FontSize="20" Margin="10,398,50.2,86.8" xml:space="preserve">SEED имеет сложное ключевое расписание, генерируя 16  64-разрядных подключей, используя G-Функции над исходныи ключом, комбинированным со специальными раундовыми константами.</TextBlock>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
