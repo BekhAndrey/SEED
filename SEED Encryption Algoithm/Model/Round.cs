@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SEED_Encryption_Algoithm
 {
-    public class RoundValue
+    public class Round
     {
         public int roundNumber { get; set; }
 

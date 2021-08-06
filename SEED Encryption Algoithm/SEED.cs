@@ -162,6 +162,8 @@ namespace SEED_Encryption_Algoithm
             0xC9D1D819, 0x4C404C0C, 0x83838003, 0x8F838C0F, 0xCEC2CC0E, 0x0B33383B, 0x4A42480A, 0x87B3B437
         };
 
+        private static GValue _dummy = null;
+
         public static void keySchedule(ref UInt32[] roundKeys,UInt32 k0, UInt32 k1, UInt32 k2, UInt32 k3)
         {
             roundKeys = new UInt32[32];
@@ -173,9 +175,9 @@ namespace SEED_Encryption_Algoithm
             for (int i = 0; i < 16; i++)
             {
                 t = key0 + key2 - kc[i];
-                roundKeys[2 * i] = GFunction(t);
+                roundKeys[2 * i] = GFunction(ref _dummy, t);
                 t = key1 - key3 + kc[i];
-                roundKeys[2 * i + 1] = GFunction(t);
+                roundKeys[2 * i + 1] = GFunction(ref _dummy, t);
 
                 //Odd round?
                 if ((i % 2) != 0)
@@ -194,29 +196,20 @@ namespace SEED_Encryption_Algoithm
             }
         }
 
-        public static UInt32 GFunction(UInt32 x)
-        {
-            UInt32 s0 = ss0[(x) & 0xFF];
-            UInt32 s1 = ss1[((x) >> 8) & 0xFF];
-            UInt32 s2 = ss2[((x) >> 16) & 0xFF];
-            UInt32 s3 = ss3[((x) >> 24) & 0xFF];
-            UInt32 result = s0 ^ s1 ^ s2 ^ s3;
-            return result;
-        }
         public static void FFunction(UInt32 k0, UInt32 k1, ref UInt32 l0, ref UInt32 l1, ref UInt32 r0, ref UInt32 r1, ref UInt32 t0, ref UInt32 t1)
         {
             t1 = (r0 ^ k0) ^ (r1 ^ k1);
-            t1 = GFunction(t1);
+            t1 = GFunction(ref _dummy, t1);
             t0 = t1 + (r0 ^ k0);
-            t0 = GFunction(t0);
+            t0 = GFunction(ref _dummy, t0);
             t1 += t0;
-            t1 = GFunction(t1);
+            t1 = GFunction(ref _dummy, t1);
             t0 += t1;
         }
 
-        public static UInt32[] seedEncryption(ref List<RoundValue> roundList , UInt32[] roundKeys, UInt32 l0, UInt32 l1, UInt32 r0, UInt32 r1)
+        public static UInt32[] seedEncryption(ref List<Round> roundList , UInt32[] roundKeys, UInt32 l0, UInt32 l1, UInt32 r0, UInt32 r1)
         {
-            roundList = new List<RoundValue>();
+            roundList = new List<Round>();
             int i;
             UInt32 temp0 = 0;
             UInt32 temp1 = 0;
@@ -227,7 +220,7 @@ namespace SEED_Encryption_Algoithm
             int roundKeysPos = 0;
             for (i = 0; i < 16; i++)
             {
-                RoundValue values = new RoundValue() { roundNumber = i + 1, Ki0 = roundKeys[roundKeysPos], 
+                Round values = new Round() { roundNumber = i + 1, Ki0 = roundKeys[roundKeysPos], 
                                                        Ki1 = roundKeys[roundKeysPos + 1], L0 = left0, L1 = left1, R0 = right0, R1 = right1 };
                 roundList.Add(values);
                 
@@ -250,9 +243,9 @@ namespace SEED_Encryption_Algoithm
             return res;
         }
 
-        public static UInt32[] seedDecryption(ref List<RoundValue> roundList, UInt32[] roundKeys,UInt32 l0, UInt32 l1, UInt32 r0, UInt32 r1)
+        public static UInt32[] seedDecryption(ref List<Round> roundList, UInt32[] roundKeys,UInt32 l0, UInt32 l1, UInt32 r0, UInt32 r1)
         {
-            roundList = new List<RoundValue>();
+            roundList = new List<Round>();
             int i;
             UInt32 temp0 = 0;
             UInt32 temp1 = 0;
@@ -263,7 +256,7 @@ namespace SEED_Encryption_Algoithm
             int roundKeysPos = 31;
             for (i = 0; i < 16; i++)
             {
-                RoundValue values = new RoundValue() { roundNumber = i + 1, Ki0 = roundKeys[roundKeysPos-1], Ki1 = roundKeys[roundKeysPos], L0 = left0, L1 = left1, R0 = right0, R1 = right1 };
+                Round values = new Round() { roundNumber = i + 1, Ki0 = roundKeys[roundKeysPos-1], Ki1 = roundKeys[roundKeysPos], L0 = left0, L1 = left1, R0 = right0, R1 = right1 };
                 roundList.Add(values);
                 
                 FFunction(roundKeys[roundKeysPos - 1], roundKeys[roundKeysPos], ref left0, ref left1, ref right0, ref right1, ref temp0, ref temp1);
@@ -321,15 +314,14 @@ namespace SEED_Encryption_Algoithm
             return res;
         }
 
-        public static UInt32 ShowGFunction(ref GFunctionValue valuesToShow, UInt32 x)
+        public static UInt32 GFunction(ref GValue valuesToShow, UInt32 x)
         {
             UInt32 s0 = ss0[(x) & 0xFF];
             UInt32 s1 = ss1[((x) >> 8) & 0xFF];
             UInt32 s2 = ss2[((x) >> 16) & 0xFF];
             UInt32 s3 = ss3[((x) >> 24) & 0xFF];
-            UInt32 result = s0 ^ s1 ^ s2 ^ s3;
-            valuesToShow = new GFunctionValue() { value = x, SS0x = s0, SS1x = s1, SS2x = s2, SS3x = s3, result = result};
-            return result;
+            valuesToShow = new GValue() { value = x, SS0x = s0, SS1x = s1, SS2x = s2, SS3x = s3, result = s0 ^ s1 ^ s2 ^ s3 };
+            return s0 ^ s1 ^ s2 ^ s3;
         }
     }
 }

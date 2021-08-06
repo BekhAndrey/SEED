@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SEED_Encryption_Algoithm
 {
-    public class GFunctionValue
+    public class GValue
     {
         public UInt32 value { get; set; }
 

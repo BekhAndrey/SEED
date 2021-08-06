@@ -557,7 +557,7 @@ C9D1D819,4C404C0C,83838003,8F838C0F,CEC2CC0E,0B33383B,4A42480A,87B3B437</TextBlo
                                  FontSize="18"
   materialDesign:HintAssist.Hint="Расшифрованный текст"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-  VerticalAlignment="Top" Margin="675,350,64.2,0" />
+  VerticalAlignment="Top" Margin="675,354,64.2,0" />
                         <Button x:Name="DecryptTextBtn" FontSize="18" Content="Расшифровать текст" HorizontalAlignment="Left" Margin="346,360,0,0" VerticalAlignment="Top" Height="40" Width="287" Click="decryptTextClick"/>
 
 

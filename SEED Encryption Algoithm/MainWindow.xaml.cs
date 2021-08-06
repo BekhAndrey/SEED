@@ -78,7 +78,7 @@ namespace SEED_Encryption_Algoithm
                 }
                 if(roundKeys == null)
                 {
-                    err = new CustomMessageBox("Вы не сгенериовали подключи!", MessageType.Error, MessageButtons.Ok).ShowDialog();
+                    err = new CustomMessageBox("Вы не сгенерировали подключи!", MessageType.Error, MessageButtons.Ok).ShowDialog();
                 }
                 else if(text.Length>16)
                 {
@@ -87,7 +87,7 @@ namespace SEED_Encryption_Algoithm
                 else
                 {
                     byte[] block = Encoding.GetEncoding(1251).GetBytes(text);
-                    List<RoundValue> roundList = null;
+                    List<Round> roundList = null;
                     UInt32[] blockParts = SEED.getParts(block);
                     UInt32[] encrypted = SEED.seedEncryption(ref roundList, roundKeys, blockParts[0], blockParts[1], blockParts[2], blockParts[3]);
                     byte[] res0 = new byte[4];
@@ -124,12 +124,12 @@ namespace SEED_Encryption_Algoithm
             {
                 if (roundKeys == null)
                 {
-                    err = new CustomMessageBox("Вы не сгенериовали подключи!", MessageType.Error, MessageButtons.Ok).ShowDialog();
+                    err = new CustomMessageBox("Вы не сгенерировали подключи!", MessageType.Error, MessageButtons.Ok).ShowDialog();
                 }
                 else
                 {
                     byte[] block = Encoding.GetEncoding(1251).GetBytes(text);
-                    List<RoundValue> roundList = null;
+                    List<Round> roundList = null;
                     UInt32[] blockParts = SEED.getParts(block);
                     UInt32[] encrypted = SEED.seedDecryption(ref roundList, roundKeys, blockParts[0], blockParts[1], blockParts[2], blockParts[3]);
                     byte[] res0 = new byte[4];
@@ -154,17 +154,17 @@ namespace SEED_Encryption_Algoithm
 
         private void generateGClick(object sender, RoutedEventArgs e)
         {
-            List<GFunctionValue> list = new List<GFunctionValue>();
+            List<GValue> listForTable = new List<GValue>();
             try
             {
                 string text = GBox.Text;
                 UInt32 x = Convert.ToUInt32(text);
-                GFunctionValue valuesToShow = null;
-                UInt32 result = SEED.ShowGFunction(ref valuesToShow, x);
-                list.Add(valuesToShow);
+                GValue valuesToShow = null;
+                UInt32 GFunctionResult = SEED.GFunction(ref valuesToShow, x);
+                listForTable.Add(valuesToShow);
                 GResult.Clear();
-                GResult.Text = result.ToString();
-                GGrid.ItemsSource = list;
+                GResult.Text = GFunctionResult.ToString();
+                GGrid.ItemsSource = listForTable;
             }
             catch(Exception ex)
             {
@@ -203,7 +203,7 @@ namespace SEED_Encryption_Algoithm
                 }
                 foreach (string s in blocks)
                 {
-                    List<RoundValue> roundList = null;
+                    List<Round> roundList = null;
                     byte[] block = Encoding.GetEncoding(1251).GetBytes(s);
                     UInt32[] blockParts = SEED.getParts(block);
                     UInt32[] encrypted = SEED.seedEncryption(ref roundList,roundKeys, blockParts[0], blockParts[1], blockParts[2], blockParts[3]);
@@ -239,7 +239,7 @@ namespace SEED_Encryption_Algoithm
             }
             foreach (string s in blocks)
             {
-                List<RoundValue> roundList = null;
+                List<Round> roundList = null;
                 byte[] block = Encoding.GetEncoding(1251).GetBytes(s);
                 UInt32[] blockParts = SEED.getParts(block);
                 UInt32[] encrypted = SEED.seedDecryption(ref roundList, roundKeys, blockParts[0], blockParts[1], blockParts[2], blockParts[3]);
